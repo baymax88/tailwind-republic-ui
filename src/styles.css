@@ -1,0 +1,11 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+.menu-hidden {
+    @apply duration-150 ease-out opacity-0 scale-95;
+}
+
+.menu-shown {
+    @apply duration-150 ease-in opacity-100 scale-100;
+}
