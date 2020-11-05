@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,812 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 </head>
+
 <body>
+    <!-- navbar -->
+    <nav class="bg-gray-800">
+        <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+            <div class="relative flex items-center justify-between h-16 z-10">
+                <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                    <!-- Mobile menu button-->
+                    <button
+                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white transition duration-150 ease-in-out"
+                        aria-label="Main menu" aria-expanded="false">
+                        <!-- Icon when menu is closed. -->
+                        <!--
+                        Heroicon name: menu
+            
+                        Menu open: "hidden", Menu closed: "block"
+                        -->
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <!-- Icon when menu is open. -->
+                        <!--
+                        Heroicon name: x
+            
+                        Menu open: "block", Menu closed: "hidden"
+                        -->
+                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+                    <div class="flex-shrink-0">
+                        <img class="block lg:hidden h-8 w-auto"
+                            src="https://tailwindui.com/img/logos/workflow-mark-on-dark.svg" alt="Workflow logo">
+                        <img class="hidden lg:block h-8 w-auto"
+                            src="https://tailwindui.com/img/logos/workflow-logo-on-dark.svg" alt="Workflow logo">
+                    </div>
+                    <div class="hidden sm:block sm:ml-6">
+                        <div class="flex">
+                            <a href="#"
+                                class="px-3 py-2 rounded-md text-sm font-medium leading-5 text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Dashboard</a>
+                            <a href="#"
+                                class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Team</a>
+                            <a href="#"
+                                class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Projects</a>
+                            <a href="#"
+                                class="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Calendar</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                    <button
+                        class="p-1 border-2 border-transparent text-gray-400 rounded-full hover:text-white focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out"
+                        aria-label="Notifications">
+                        <!-- Heroicon name: bell -->
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                        </svg>
+                    </button>
+
+                    <!-- Profile dropdown -->
+                    <div class="ml-3 relative">
+                        <div>
+                            <button
+                                class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-white transition duration-150 ease-in-out"
+                                id="user-menu" aria-label="User menu" aria-haspopup="true">
+                                <img class="h-8 w-8 rounded-full"
+                                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                    alt="">
+                            </button>
+                        </div>
+                        <!--
+                        Profile dropdown panel, show/hide based on dropdown state.
+            
+                        Entering: "transition ease-out duration-100"
+                            From: "transform opacity-0 scale-95"
+                            To: "transform opacity-100 scale-100"
+                        Leaving: "transition ease-in duration-75"
+                            From: "transform opacity-100 scale-100"
+                            To: "transform opacity-0 scale-95"
+                        -->
+                        <div class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg">
+                            <div class="py-1 rounded-md bg-white shadow-xs" role="menu" aria-orientation="vertical"
+                                aria-labelledby="user-menu">
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
+                                    role="menuitem">Your Profile</a>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
+                                    role="menuitem">Settings</a>
+                                <a href="#"
+                                    class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
+                                    role="menuitem">Sign out</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--
+        Mobile menu, toggle classes based on menu state.
     
+        Menu open: "block", Menu closed: "hidden"
+        -->
+        <div class="hidden sm:hidden">
+            <div class="px-2 pt-2 pb-3">
+                <a href="#"
+                    class="block px-3 py-2 rounded-md text-base font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Dashboard</a>
+                <a href="#"
+                    class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Team</a>
+                <a href="#"
+                    class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Projects</a>
+                <a href="#"
+                    class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Calendar</a>
+            </div>
+        </div>
+    </nav>
+    <!-- end navbar -->
+
+    <!-- content -->
+    <div class="px-24 py-16">
+        <div class="grid lg:grid-cols-12 sm:grid-cols-1 lg:gap-20 sm:gap-0">
+            <div class="lg:col-span-8 sm:col-span-full">
+                <h1
+                    class="mt-2 mb-8 text-3xl text-left leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10">
+                    All-in-one platform</h1>
+                <form>
+                    <div>
+                        <div>
+                            <div>
+                                <h3 class="text-lg leading-6 font-medium text-gray-900">
+                                    Profile
+                                </h3>
+                                <p class="mt-1 text-sm leading-5 text-gray-500">
+                                    This information will be displayed publicly so be careful what you share.
+                                </p>
+                            </div>
+                            <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+                                <div class="sm:col-span-4">
+                                    <label for="username" class="block text-sm font-medium leading-5 text-gray-700">
+                                        Username
+                                    </label>
+                                    <div class="mt-1 flex rounded-md shadow-sm">
+                                        <span
+                                            class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm">
+                                            workcation.com/
+                                        </span>
+                                        <input id="username"
+                                            class="flex-1 form-input block w-full min-w-0 rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5">
+                                    </div>
+                                </div>
+
+                                <div class="sm:col-span-6">
+                                    <label for="about" class="block text-sm font-medium leading-5 text-gray-700">
+                                        About
+                                    </label>
+                                    <div class="mt-1 rounded-md shadow-sm">
+                                        <textarea id="about" rows="3"
+                                            class="form-textarea block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5"></textarea>
+                                    </div>
+                                    <p class="mt-2 text-sm text-gray-500">Write a few sentences about yourself.</p>
+                                </div>
+
+                                <div class="sm:col-span-6">
+                                    <label for="photo" class="block text-sm leading-5 font-medium text-gray-700">
+                                        Photo
+                                    </label>
+                                    <div class="mt-2 flex items-center">
+                                        <span class="h-12 w-12 rounded-full overflow-hidden bg-gray-100">
+                                            <svg class="h-full w-full text-gray-300" fill="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path
+                                                    d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
+                                            </svg>
+                                        </span>
+                                        <span class="ml-5 rounded-md shadow-sm">
+                                            <button type="button"
+                                                class="py-2 px-3 border border-gray-300 rounded-md text-sm leading-4 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out">
+                                                Change
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="sm:col-span-6">
+                                    <label for="cover_photo" class="block text-sm leading-5 font-medium text-gray-700">
+                                        Cover photo
+                                    </label>
+                                    <div
+                                        class="mt-2 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                                        <div class="text-center">
+                                            <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor"
+                                                fill="none" viewBox="0 0 48 48">
+                                                <path
+                                                    d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+                                            <p class="mt-1 text-sm text-gray-600">
+                                                <button type="button"
+                                                    class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition duration-150 ease-in-out">
+                                                    Upload a file
+                                                </button>
+                                                or drag and drop
+                                            </p>
+                                            <p class="mt-1 text-xs text-gray-500">
+                                                PNG, JPG, GIF up to 10MB
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-8 border-t border-gray-200 pt-8">
+                            <div>
+                                <h3 class="text-lg leading-6 font-medium text-gray-900">
+                                    Personal Information
+                                </h3>
+                                <p class="mt-1 text-sm leading-5 text-gray-500">
+                                    Use a permanent address where you can receive mail.
+                                </p>
+                            </div>
+                            <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+                                <div class="sm:col-span-3">
+                                    <label for="first_name" class="block text-sm font-medium leading-5 text-gray-700">
+                                        First name
+                                    </label>
+                                    <div class="mt-1 rounded-md shadow-sm">
+                                        <input id="first_name"
+                                            class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5">
+                                    </div>
+                                </div>
+
+                                <div class="sm:col-span-3">
+                                    <label for="last_name" class="block text-sm font-medium leading-5 text-gray-700">
+                                        Last name
+                                    </label>
+                                    <div class="mt-1 rounded-md shadow-sm">
+                                        <input id="last_name"
+                                            class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5">
+                                    </div>
+                                </div>
+
+                                <div class="sm:col-span-4">
+                                    <label for="email" class="block text-sm font-medium leading-5 text-gray-700">
+                                        Email address
+                                    </label>
+                                    <div class="mt-1 rounded-md shadow-sm">
+                                        <input id="email" type="email"
+                                            class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5">
+                                    </div>
+                                </div>
+
+                                <div class="sm:col-span-3">
+                                    <label for="country" class="block text-sm font-medium leading-5 text-gray-700">
+                                        Country / Region
+                                    </label>
+                                    <div class="mt-1 rounded-md shadow-sm">
+                                        <select id="country"
+                                            class="form-select block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5">
+                                            <option>United States</option>
+                                            <option>Canada</option>
+                                            <option>Mexico</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="sm:col-span-6">
+                                    <label for="street_address"
+                                        class="block text-sm font-medium leading-5 text-gray-700">
+                                        Street address
+                                    </label>
+                                    <div class="mt-1 rounded-md shadow-sm">
+                                        <input id="street_address"
+                                            class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5">
+                                    </div>
+                                </div>
+
+                                <div class="sm:col-span-2">
+                                    <label for="city" class="block text-sm font-medium leading-5 text-gray-700">
+                                        City
+                                    </label>
+                                    <div class="mt-1 rounded-md shadow-sm">
+                                        <input id="city"
+                                            class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5">
+                                    </div>
+                                </div>
+
+                                <div class="sm:col-span-2">
+                                    <label for="state" class="block text-sm font-medium leading-5 text-gray-700">
+                                        State / Province
+                                    </label>
+                                    <div class="mt-1 rounded-md shadow-sm">
+                                        <input id="state"
+                                            class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5">
+                                    </div>
+                                </div>
+
+                                <div class="sm:col-span-2">
+                                    <label for="zip" class="block text-sm font-medium leading-5 text-gray-700">
+                                        ZIP / Postal
+                                    </label>
+                                    <div class="mt-1 rounded-md shadow-sm">
+                                        <input id="zip"
+                                            class="form-input block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-8 border-t border-gray-200 pt-8">
+                            <div>
+                                <h3 class="text-lg leading-6 font-medium text-gray-900">
+                                    Notifications
+                                </h3>
+                                <p class="mt-1 text-sm leading-5 text-gray-500">
+                                    We'll always let you know about important changes, but you pick what else you want
+                                    to hear
+                                    about.
+                                </p>
+                            </div>
+                            <div class="mt-6">
+                                <fieldset>
+                                    <legend class="text-base font-medium text-gray-900">
+                                        By Email
+                                    </legend>
+                                    <div class="mt-4">
+                                        <div class="relative flex items-start">
+                                            <div class="flex items-center h-5">
+                                                <input id="comments" type="checkbox"
+                                                    class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
+                                            </div>
+                                            <div class="ml-3 text-sm leading-5">
+                                                <label for="comments" class="font-medium text-gray-700">Comments</label>
+                                                <p class="text-gray-500">Get notified when someones posts a comment on a
+                                                    posting.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="mt-4">
+                                            <div class="relative flex items-start">
+                                                <div class="flex items-center h-5">
+                                                    <input id="candidates" type="checkbox"
+                                                        class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
+                                                </div>
+                                                <div class="ml-3 text-sm leading-5">
+                                                    <label for="candidates"
+                                                        class="font-medium text-gray-700">Candidates</label>
+                                                    <p class="text-gray-500">Get notified when a candidate applies for a
+                                                        job.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mt-4">
+                                            <div class="relative flex items-start">
+                                                <div class="flex items-center h-5">
+                                                    <input id="offers" type="checkbox"
+                                                        class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
+                                                </div>
+                                                <div class="ml-3 text-sm leading-5">
+                                                    <label for="offers" class="font-medium text-gray-700">Offers</label>
+                                                    <p class="text-gray-500">Get notified when a candidate accepts or
+                                                        rejects an
+                                                        offer.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <fieldset class="mt-6">
+                                    <legend class="text-base font-medium text-gray-900">
+                                        Push Notifications
+                                    </legend>
+                                    <p class="text-sm leading-5 text-gray-500">These are delivered via SMS to your
+                                        mobile phone.</p>
+                                    <div class="mt-4">
+                                        <div class="flex items-center">
+                                            <input id="push_everything" name="push_notifications" type="radio"
+                                                class="form-radio h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
+                                            <label for="push_everything" class="ml-3">
+                                                <span
+                                                    class="block text-sm leading-5 font-medium text-gray-700">Everything</span>
+                                            </label>
+                                        </div>
+                                        <div class="mt-4 flex items-center">
+                                            <input id="push_email" name="push_notifications" type="radio"
+                                                class="form-radio h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
+                                            <label for="push_email" class="ml-3">
+                                                <span class="block text-sm leading-5 font-medium text-gray-700">Same as
+                                                    email</span>
+                                            </label>
+                                        </div>
+                                        <div class="mt-4 flex items-center">
+                                            <input id="push_nothing" name="push_notifications" type="radio"
+                                                class="form-radio h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
+                                            <label for="push_nothing" class="ml-3">
+                                                <span class="block text-sm leading-5 font-medium text-gray-700">No push
+                                                    notifications</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8 border-t border-gray-200 pt-5">
+                        <div class="flex justify-end">
+                            <span class="inline-flex rounded-md shadow-sm">
+                                <button type="button"
+                                    class="py-2 px-4 border border-gray-300 rounded-md text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800 transition duration-150 ease-in-out">
+                                    Cancel
+                                </button>
+                            </span>
+                            <span class="ml-3 inline-flex rounded-md shadow-sm">
+                                <button type="submit"
+                                    class="inline-flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
+                                    Save
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="lg:col-span-4 sm:col-span-full">
+                <div>
+                    <label for="location" class="block text-sm leading-5 font-medium text-gray-700">Location</label>
+                    <select id="location"
+                        class="mt-1 form-select block w-full pl-3 pr-10 py-2 text-base leading-6 border-gray-300 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5">
+                        <option>USA</option>
+                        <option selected>Canada</option>
+                        <option>EU</option>
+                    </select>
+                </div>
+
+                <div class="bg-white overflow-hidden">
+                    <div class="px-4 py-5 border-b border-gray-200 sm:px-6">
+                        <h3 class="text-lg leading-6 font-medium text-gray-900">
+                            Applicant Information
+                        </h3>
+                        <p class="mt-1 max-w-2xl text-sm leading-5 text-gray-500">
+                            Personal details and application.
+                        </p>
+                    </div>
+                    <div class="px-4 py-5 sm:px-6">
+                        <dl class="grid grid-cols-1 gap-x-4 gap-y-8">
+                            <div>
+                                <dt class="text-sm leading-5 font-medium text-gray-500">
+                                    Full name
+                                </dt>
+                                <dd class="mt-1 text-sm leading-5 text-gray-900">
+                                    Margot Foster
+                                </dd>
+                            </div>
+                            <div>
+                                <dt class="text-sm leading-5 font-medium text-gray-500">
+                                    Application for
+                                </dt>
+                                <dd class="mt-1 text-sm leading-5 text-gray-900">
+                                    Backend Developer
+                                </dd>
+                            </div>
+                            <div>
+                                <dt class="text-sm leading-5 font-medium text-gray-500">
+                                    Email address
+                                </dt>
+                                <dd class="mt-1 text-sm leading-5 text-gray-900">
+                                    margotfoster@example.com
+                                </dd>
+                            </div>
+                            <div>
+                                <dt class="text-sm leading-5 font-medium text-gray-500">
+                                    Salary expectation
+                                </dt>
+                                <dd class="mt-1 text-sm leading-5 text-gray-900">
+                                    $120,000
+                                </dd>
+                            </div>
+                            <div>
+                                <dt class="text-sm leading-5 font-medium text-gray-500">
+                                    About
+                                </dt>
+                                <dd class="mt-1 text-sm leading-5 text-gray-900">
+                                    Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa
+                                    consequat. Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit
+                                    nostrud in ea officia proident. Irure nostrud pariatur mollit ad adipisicing
+                                    reprehenderit deserunt qui eu.
+                                </dd>
+                            </div>
+                            <div>
+                                <dt class="text-sm leading-5 font-medium text-gray-500">
+                                    Attachments
+                                </dt>
+                                <dd class="mt-1 text-sm leading-5 text-gray-900">
+                                    <ul class="border border-gray-200 rounded-md">
+                                        <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm leading-5">
+                                            <div class="w-0 flex-1 flex items-center">
+                                                <!-- Heroicon name: paper-clip -->
+                                                <svg class="flex-shrink-0 h-5 w-5 text-gray-400"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                                    fill="currentColor">
+                                                    <path fill-rule="evenodd"
+                                                        d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z"
+                                                        clip-rule="evenodd" />
+                                                </svg>
+                                                <span class="ml-2 flex-1 w-0 truncate">
+                                                    resume_back_end_developer.pdf
+                                                </span>
+                                            </div>
+                                            <div class="ml-4 flex-shrink-0">
+                                                <a href="#"
+                                                    class="font-medium text-indigo-600 hover:text-indigo-500 transition duration-150 ease-in-out">
+                                                    Download
+                                                </a>
+                                            </div>
+                                        </li>
+                                        <li
+                                            class="border-t border-gray-200 pl-3 pr-4 py-3 flex items-center justify-between text-sm leading-5">
+                                            <div class="w-0 flex-1 flex items-center">
+                                                <!-- Heroicon name: paper-clip -->
+                                                <svg class="flex-shrink-0 h-5 w-5 text-gray-400"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                                    fill="currentColor">
+                                                    <path fill-rule="evenodd"
+                                                        d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z"
+                                                        clip-rule="evenodd" />
+                                                </svg>
+                                                <span class="ml-2 flex-1 w-0 truncate">
+                                                    coverletter_back_end_developer.pdf
+                                                </span>
+                                            </div>
+                                            <div class="ml-4 flex-shrink-0">
+                                                <a href="#"
+                                                    class="font-medium text-indigo-600 hover:text-indigo-500 transition duration-150 ease-in-out">
+                                                    Download
+                                                </a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </dd>
+                            </div>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end content -->
+
+    <!-- footer section -->
+    <footer class="bg-gray-800">
+        <div class="max-w-screen-xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+            <div class="pb-8 xl:grid xl:grid-cols-5 xl:gap-8">
+                <div class="grid grid-cols-2 gap-8 xl:col-span-4">
+                    <div class="md:grid md:grid-cols-2 md:gap-8">
+                        <div>
+                            <h4 class="text-sm leading-5 font-semibold text-gray-400 tracking-wider uppercase">
+                                Solutions
+                            </h4>
+                            <ul class="mt-4 space-y-4">
+                                <li>
+                                    <a href="#" class="text-base leading-6 text-gray-300 hover:text-white">
+                                        Marketing
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-base leading-6 text-gray-300 hover:text-white">
+                                        Analytics
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-base leading-6 text-gray-300 hover:text-white">
+                                        Commerce
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-base leading-6 text-gray-300 hover:text-white">
+                                        Insights
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mt-12 md:mt-0">
+                            <h4 class="text-sm leading-5 font-semibold text-gray-400 tracking-wider uppercase">
+                                Support
+                            </h4>
+                            <ul class="mt-4 space-y-4">
+                                <li>
+                                    <a href="#" class="text-base leading-6 text-gray-300 hover:text-white">
+                                        Pricing
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-base leading-6 text-gray-300 hover:text-white">
+                                        Documentation
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-base leading-6 text-gray-300 hover:text-white">
+                                        Guides
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-base leading-6 text-gray-300 hover:text-white">
+                                        API Status
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="md:grid md:grid-cols-2 md:gap-8">
+                        <div>
+                            <h4 class="text-sm leading-5 font-semibold text-gray-400 tracking-wider uppercase">
+                                Company
+                            </h4>
+                            <ul class="mt-4 space-y-4">
+                                <li>
+                                    <a href="#" class="text-base leading-6 text-gray-300 hover:text-white">
+                                        About
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-base leading-6 text-gray-300 hover:text-white">
+                                        Blog
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-base leading-6 text-gray-300 hover:text-white">
+                                        Jobs
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-base leading-6 text-gray-300 hover:text-white">
+                                        Press
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-base leading-6 text-gray-300 hover:text-white">
+                                        Partners
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mt-12 md:mt-0">
+                            <h4 class="text-sm leading-5 font-semibold text-gray-400 tracking-wider uppercase">
+                                Legal
+                            </h4>
+                            <ul class="mt-4 space-y-4">
+                                <li>
+                                    <a href="#" class="text-base leading-6 text-gray-300 hover:text-white">
+                                        Claim
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-base leading-6 text-gray-300 hover:text-white">
+                                        Privacy
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-base leading-6 text-gray-300 hover:text-white">
+                                        Terms
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-12 xl:mt-0">
+                    <h4 class="text-sm leading-5 font-semibold text-gray-400 tracking-wider uppercase">
+                        Language &amp; Currency
+                    </h4>
+                    <form class="mt-4 space-y-4 sm:max-w-xs">
+                        <fieldset class="w-full">
+                            <label for="language" class="sr-only">Language</label>
+                            <div class="relative">
+                                <select id="language"
+                                    class="appearance-none block w-full bg-gray-700 border border-transparent rounded-md py-2 pl-3 pr-10 text-base leading-6 text-white focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5">
+                                    <option selected>English</option>
+                                    <option>French</option>
+                                    <option>German</option>
+                                    <option>Japanese</option>
+                                    <option>Spanish</option>
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 px-2 flex items-center"
+                                    aria-hidden="true">
+                                    <!-- Heroicon name: chevron-down -->
+                                    <svg class="h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd"
+                                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="w-full">
+                            <label for="currency" class="sr-only">Currency</label>
+                            <div class="mt-1.5 relative">
+                                <select id="currency"
+                                    class="appearance-none w-full bg-gray-700 border border-transparent rounded-md block py-2 pl-3 pr-10 text-base leading-6 text-white focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5">
+                                    <option>ARS</option>
+                                    <option selected>AUD</option>
+                                    <option>CAD</option>
+                                    <option>CHF</option>
+                                    <option>EUR</option>
+                                    <option>GBP</option>
+                                    <option>JPY</option>
+                                    <option>USD</option>
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 px-2 flex items-center"
+                                    aria-hidden="true">
+                                    <!-- Heroicon name: chevron-down -->
+                                    <svg class="h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd"
+                                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            <div
+                class="border-t border-gray-700 pt-8 space-y-4 lg:space-y-0 lg:flex lg:items-center lg:justify-between xl:mt-0">
+                <div class="space-y-2">
+                    <h4 class="text-sm leading-5 font-semibold text-gray-400 tracking-wider uppercase">
+                        Subscribe to our newsletter
+                    </h4>
+                    <p class="text-base leading-6 text-gray-300">
+                        The latest news, articles, and resources, sent to your inbox weekly.
+                    </p>
+                </div>
+                <form class="sm:flex sm:max-w-md">
+                    <label for="emailAddress" class="sr-only">Email address</label>
+                    <input type="email" id="emailAddress"
+                        class="appearance-none min-w-0 w-full bg-white border border-transparent rounded-md py-2 px-4 text-base leading-6 text-gray-900 placeholder-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue focus:placeholder-gray-400 transition duration-150 ease-in-out sm:max-w-xs"
+                        placeholder="Enter your email">
+                    <div class="mt-3 rounded-md sm:mt-0 sm:ml-3 sm:flex-shrink-0">
+                        <button type="submit"
+                            class="w-full bg-indigo-500 border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-base leading-6 font-medium text-white hover:bg-indigo-400 focus:outline-none focus:border-indigo-600 focus:shadow-outline-indigo active:bg-indigo-600 transition duration-150 ease-in-out">
+                            Subscribe
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="mt-8 border-t border-gray-700 pt-8 md:flex md:items-center md:justify-between">
+                <div class="flex space-x-6 md:order-2">
+                    <a href="#" class="text-gray-400 hover:text-gray-300">
+                        <span class="sr-only">Facebook</span>
+                        <svg class="h-6 w-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
+                            <path fill-rule="evenodd"
+                                d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-gray-300">
+                        <span class="sr-only">Instagram</span>
+                        <svg class="h-6 w-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
+                            <path fill-rule="evenodd"
+                                d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-gray-300">
+                        <span class="sr-only">Twitter</span>
+                        <svg class="h-6 w-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+                        </svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-gray-300">
+                        <span class="sr-only">GitHub</span>
+                        <svg class="h-6 w-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
+                            <path fill-rule="evenodd"
+                                d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-gray-300">
+                        <span class="sr-only">Dribbble</span>
+                        <svg class="h-6 w-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
+                            <path fill-rule="evenodd"
+                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c5.51 0 10-4.48 10-10S17.51 2 12 2zm6.605 4.61a8.502 8.502 0 011.93 5.314c-.281-.054-3.101-.629-5.943-.271-.065-.141-.12-.293-.184-.445a25.416 25.416 0 00-.564-1.236c3.145-1.28 4.577-3.124 4.761-3.362zM12 3.475c2.17 0 4.154.813 5.662 2.148-.152.216-1.443 1.941-4.48 3.08-1.399-2.57-2.95-4.675-3.189-5A8.687 8.687 0 0112 3.475zm-3.633.803a53.896 53.896 0 013.167 4.935c-3.992 1.063-7.517 1.04-7.896 1.04a8.581 8.581 0 014.729-5.975zM3.453 12.01v-.26c.37.01 4.512.065 8.775-1.215.25.477.477.965.694 1.453-.109.033-.228.065-.336.098-4.404 1.42-6.747 5.303-6.942 5.629a8.522 8.522 0 01-2.19-5.705zM12 20.547a8.482 8.482 0 01-5.239-1.8c.152-.315 1.888-3.656 6.703-5.337.022-.01.033-.01.054-.022a35.318 35.318 0 011.823 6.475 8.4 8.4 0 01-3.341.684zm4.761-1.465c-.086-.52-.542-3.015-1.659-6.084 2.679-.423 5.022.271 5.314.369a8.468 8.468 0 01-3.655 5.715z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                </div>
+                <p class="mt-8 text-base leading-6 text-gray-400 md:mt-0 md:order-1">
+                    &copy; 2020 Workflow, Inc. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+    <!-- end footer section -->
+
+    <script>
+        
+    </script>
+
 </body>
+
 </html>
