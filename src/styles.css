@@ -9,3 +9,7 @@
 .menu-shown {
     @apply duration-150 ease-in opacity-100 scale-100;
 }
+
+.custom-link {
+    color: #161e2e !important;
+}
