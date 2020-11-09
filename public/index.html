@@ -287,7 +287,7 @@
         <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
             <!--
             Background overlay, show/hide based on modal state.
-    
+
             Entering: "ease-out duration-300"
             From: "opacity-0"
             To: "opacity-100"
@@ -303,7 +303,7 @@
             <span class="hidden sm:inline-block sm:align-middle sm:h-screen"></span>&#8203;
             <!--
             Modal panel, show/hide based on modal state.
-    
+
             Entering: "ease-out duration-300"
             From: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             To: "opacity-100 translate-y-0 sm:scale-100"
@@ -311,7 +311,7 @@
             From: "opacity-100 translate-y-0 sm:scale-100"
             To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             -->
-            <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-md sm:w-full opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+            <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-xl sm:w-full opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                 role="dialog" aria-modal="true" aria-labelledby="modal-headline" id="modal-panel">
                 <div class="mt-5 md:mt-0 md:col-span-2">
                     <form action="#" method="POST">
@@ -321,8 +321,111 @@
                                 <p class="text-sm text-gray-500 mb-3">
                                     The SEC limits how much you can invest in any 12 month period. The limit is calculated based on your net worth and income.
                                 </p>
-
                             </div>
+
+                            <div class="grid gird-cols-6 gap-6 px-4 py-6">
+                                <div class="col-span-4 grid grid-cols-4 gap-6">
+                                    <div class="col-span-4 sm:col-span-2">
+                                        <label for="yearly-income"
+                                            class="block text-sm font-medium leading-5 text-gray-700">Yearly
+                                            income</label>
+                                        <div class="mt-1 relative rounded-md shadow-sm">
+                                            <div
+                                                class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                                <span class="text-gray-500 sm:text-sm sm:leading-5">
+                                                    $
+                                                </span>
+                                            </div>
+                                            <input id="yearly-income"
+                                                class="form-input block w-full pl-7 pr-12 sm:text-sm sm:leading-5"
+                                                placeholder="0.00" aria-describedby="price-currency">
+                                            <div
+                                                class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                                                <span class="text-gray-500 sm:text-sm sm:leading-5"
+                                                    id="price-currency">
+                                                    USD
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-span-4 sm:col-span-2">
+                                        <label for="net-worth"
+                                            class="block text-sm font-medium leading-5 text-gray-700">Net
+                                            worth</label>
+                                        <div class="mt-1 relative rounded-md shadow-sm">
+                                            <div
+                                                class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                                <span class="text-gray-500 sm:text-sm sm:leading-5">
+                                                    $
+                                                </span>
+                                            </div>
+                                            <input id="net-worth"
+                                                class="form-input block w-full pl-7 pr-12 sm:text-sm sm:leading-5"
+                                                placeholder="0.00" aria-describedby="price-currency">
+                                            <div
+                                                class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                                                <span class="text-gray-500 sm:text-sm sm:leading-5"
+                                                    id="price-currency">
+                                                    USD
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-span-4 border-b-2 py-2">
+                                        <div class="flex items-center">
+                                            <input id="checkbox-1" type="checkbox"
+                                                class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
+                                            <label for="checkbox-1"
+                                                class="ml-2 block text-sm leading-5 text-gray-900">
+                                                The above includes my spouse's income and net worth
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-span-4 border-b-2 py-2">
+                                        <div class="flex items-center">
+                                            <input id="checkbox-2" type="checkbox"
+                                                class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out">
+                                            <label for="checkbox-2"
+                                                class="ml-2 block text-sm leading-5 text-gray-900">
+                                                I have invested in crowdfunding offerings in the last 12 months
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-span-4 sm:col-span-2">
+                                        <label for="job-title"
+                                            class="block text-sm font-medium leading-5 text-gray-700">Job
+                                            title</label>
+                                        <div class="mt-1 relative rounded-md shadow-sm">
+                                            <input id="job-title"
+                                                class="form-input block w-full sm:text-sm sm:leading-5"
+                                                placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="col-span-4 sm:col-span-2">
+                                        <label for="job-industry"
+                                            class="block text-sm font-medium leading-5 text-gray-700">Job
+                                            industry</label>
+                                        <div class="mt-1 relative rounded-md shadow-sm">
+                                            <input id="job-industry"
+                                                class="form-input block w-full sm:text-sm sm:leading-5"
+                                                placeholder="">
+                                        </div>
+                                    </div>
+
+                                    <p class="col-span-4 text-sm text-gray-400">
+                                        Necessary for Republic to assess your eligibility. This information will not
+                                        be disclosed or used for any other commercial or marketing purposes.
+                                    </p>
+
+                                    <button type="button"
+                                        class="inline-flex items-center px-4 py-2 border border-transparent text-base justify-center leading-6 font-medium rounded-md text-white bg-gray-900 hover:bg-gray-500 focus:outline-none focus:border-gray-700 focus:shadow-outline-gray active:bg-gray-700 transition ease-in-out duration-150">
+                                        Update
+                                    </button>
+                                </div>
+                            </div>
+
                             <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
                                 <span class="inline-flex rounded-md shadow-sm">
                                     <button type="button"
