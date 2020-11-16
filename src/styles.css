@@ -11,9 +11,25 @@
 }
 
 .custom-link {
-    color: #161e2e !important;
+    color: #070f1a !important;
 }
 
 .bg-custom {
     background-color: #070f1a;
+}
+
+.text-custom {
+    color: #070f1a;
+}
+
+.profile-bg-selected {
+    background-color: #f9fafb;
+}
+
+.profile-text-selected {
+    color: #070f1a;
+}
+
+.profile-icon-selected {
+    color: #565d6b;
 }
