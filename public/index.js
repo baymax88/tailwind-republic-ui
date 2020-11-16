@@ -33,9 +33,9 @@ const switchOn = document.querySelector('#switch-on')
 
 if (toggleSwitch) {
     toggleSwitch.addEventListener('click', () => {
-        if (toggleSwitch.classList.contains('bg-gray-900')) {
+        if (toggleSwitch.classList.contains('bg-custom')) {
             toggleSwitch.classList.add('bg-gray-400')
-            toggleSwitch.classList.remove('bg-gray-900')
+            toggleSwitch.classList.remove('bg-custom')
             switchBox.classList.add('translate-x-0')
             switchBox.classList.remove('translate-x-5')
             switchOff.classList.add('opacity-100', 'ease-in', 'duration-200')
@@ -43,7 +43,7 @@ if (toggleSwitch) {
             switchOn.classList.add('opacity-0', 'ease-out', 'duration-100')
             switchOn.classList.remove('opacity-100', 'ease-in', 'duration-200')
         } else {
-            toggleSwitch.classList.add('bg-gray-900')
+            toggleSwitch.classList.add('bg-custom')
             toggleSwitch.classList.remove('bg-gray-400')
             switchBox.classList.add('translate-x-5')
             switchBox.classList.remove('translate-x-0')
